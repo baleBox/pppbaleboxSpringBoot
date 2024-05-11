@@ -1,20 +1,21 @@
 package ru.balebox.pppbaleboxspringboot.model;
 
 import jakarta.persistence.*;
+import jakarta.persistence.GenerationType;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
-    @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
-    @Column(name="age")
+    @Column(name = "age")
     private int age;
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
     public User() {

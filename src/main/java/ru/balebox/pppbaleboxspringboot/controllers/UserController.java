@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import ru.balebox.pppbaleboxspringboot.model.User;
 import ru.balebox.pppbaleboxspringboot.service.UserService;
 
@@ -54,8 +53,8 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String updateUser(@RequestParam("id") String id, @ModelAttribute("user") User user) {
-        userService.editUser(user, Long.parseLong(id));
+    public String updateUser(@ModelAttribute("user") User user) {
+        userService.editUser(user);
         return "redirect:/users";
     }
 
