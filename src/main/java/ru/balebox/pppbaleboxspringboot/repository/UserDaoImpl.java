@@ -3,6 +3,7 @@ package ru.balebox.pppbaleboxspringboot.repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
+import ru.balebox.pppbaleboxspringboot.controllers.UserNotFoundException;
 import ru.balebox.pppbaleboxspringboot.model.User;
 
 import java.util.List;
@@ -20,7 +21,12 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUserById(Long id) {
-        return entityManager.find(User.class, id);
+        User user = entityManager.find(User.class, id);
+
+        if (user == null)
+            throw new UserNotFoundException(String.format("пользователь с id=%d не найден", id));
+
+        return user;
     }
 
     @Override

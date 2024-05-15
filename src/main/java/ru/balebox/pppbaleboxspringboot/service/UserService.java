@@ -5,6 +5,7 @@ import ru.balebox.pppbaleboxspringboot.model.User;
 import java.util.List;
 
 public interface UserService {
+
     List<User> getAllUsers(String userlist);
 
     User getUserById(Long id);
